@@ -36,7 +36,9 @@ export class HomeService {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + this.auth.token,
       }),
-      body: dto,
+      body: {
+        "listIds": dto
+      },
     };
 
     return this.http.delete(
