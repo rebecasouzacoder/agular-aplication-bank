@@ -1,0 +1,91 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">Detalhes do Banco</div>
+    <div class="card-body">
+      <div class="row justify-content-end">
+        <div class="col-auto">
+          <button
+            type="button"
+            class="btn btn-success"
+            *ngIf="verifyPermission('ROLE_BANCO_EDT')"
+            (click)="editBank()"
+          >
+            Editar
+          </button>
+        </div>
+        <div class="col-auto">
+          <button
+            type="button"
+            class="btn btn-danger"
+            *ngIf="verifyPermission('ROLE_BANCO_DEL')"
+            (click)="openModalConfirm()"
+          >
+            Excluir
+          </button>
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-primary" (click)="close()">
+            Fechar
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="row mt-4">
+        <div class="col-12">
+          <form>
+            <div class="row mt-4">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="exampleInputCodigo">Código</label>
+                  <input
+                    type="text"
+                    disabled
+                    [(ngModel)]="bankDetails.codigo"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                    id="exampleInputCodigo"
+                    placeholder="Código"
+                  />
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Status</label>
+                  <select
+                    class="form-control"
+                    disabled
+                    [(ngModel)]="bankDetails.status.descricao"
+                    [ngModelOptions]="{ standalone: true }"
+                    id="exampleFormControlSelect1"
+                  >
+                    <option>
+                      {{ bankDetails.status.descricao }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group mt-4 col-8">
+                <label for="exampleInputDescricao">Descrição</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  disabled
+                  [(ngModel)]="bankDetails.descricao"
+                  [ngModelOptions]="{ standalone: true }"
+                  id="exampleInputDescricao"
+                  placeholder="Descrição"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal
+  [dataSource]="dataSourceModal"
+  (confirmAction)="deleteBank()"
+></app-modal>

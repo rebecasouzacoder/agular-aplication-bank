@@ -1,0 +1,9 @@
+.content-home {
+  margin-left: 100px;
+  transition: 0.3s;
+  justify-content: space-around;
+  display: grid;
+  &.sidebarExpanded {
+    margin-left: 160px;
+  }
+}

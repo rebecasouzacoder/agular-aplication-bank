@@ -1,0 +1,28 @@
+<div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
+    <div class="header">
+      <div class="toggle" (click)="handleSidebarToggle()">
+        <span class="chevron"></span>
+      </div>
+    </div>
+    <div class="content">
+      <div class="link">
+        <div class="content" (click)="openLink('home')">
+          <div class="icon">
+            <i class="bi bi-house-door"></i>
+          </div>
+          <div class="title">Home</div>
+        </div>
+      </div>
+      <div class="link with-children">
+        <div class="content" (click)="openLink('bank')">
+          <div class="icon">
+            <i class="bi bi-bank"></i>
+          </div>
+          <div class="title">Bancos</div>
+        </div>
+
+      </div>
+  
+    </div>
+    <div class="footer"></div>
+  </div>
